@@ -1,0 +1,185 @@
+[
+    {
+        "pmid": "42517086",
+        "title": "Berberine-induced ferroptosis as a novel anti-cancer strategy: Molecular, epigenetic and translational perspectives.",
+        "abstract": "Cancer cells frequently evade therapies that depend on apoptosis, necessitating the exploration of alternative cell death mechanisms. Ferroptosis, an iron-dependent regulated cell death characterized by lethal lipid peroxidation, has emerged as a promising strategy for cancer treatment. Recent studies have identified berberine, an isoquinoline alkaloid derived from Coptis chinensis and Berberis species, as an inducer of ferroptosis in various malignancies through its multitarget effects. This review systematically elucidates the molecular pathways through which berberine induces ferroptosis. These pathways include the inhibition of the System Xc",
+        "journal": "EXCLI journal",
+        "year": "2026",
+        "authors": [
+            "Neetu Agrawal",
+            "Gaurav Gupta",
+            "Surya Nath Pandey",
+            "A Rekha",
+            "Mano Priya Vijayan",
+            "Dinesh Kumar Chellappan",
+            "Keshav Raj Paudal",
+            "Sachin Kumar Singh",
+            "Kamal Dua"
+        ]
+    },
+    {
+        "pmid": "42515719",
+        "title": null,
+        "abstract": "Redox homeostasis is the balance between oxidative processes and antioxidant defenses and is fundamental to cellular integrity. This review critically synthesizes current evidence on the phytochemical composition, redox-modulating mechanisms, and therapeutic bioactivities of ",
+        "journal": "Pharmaceuticals (Basel, Switzerland)",
+        "year": "2026",
+        "authors": [
+            "Asad Abbas",
+            "Saeed Vohra",
+            "Ralf Weiskirchen",
+            "Hameeza Mushtaq",
+            "Adnan Amjad",
+            "Arooma Tabassum",
+            "Shehnshah Zafar",
+            "Anis Ahmad Chaudhary",
+            "Abdulrahman Mohammed Alhudhaibi",
+            "Bipindra Pandey"
+        ]
+    },
+    {
+        "pmid": "42385864",
+        "title": "DNA methylation-mediated downregulation of MEIS2 correlates with tumor development and progression in gastric cancer.",
+        "abstract": "Gastric cancer (GC) is a molecularly heterogeneous disease with poor prognosis. DNA methylation plays a critical role in its pathogenesis, and Homeobox genes are known to be frequently dysregulated through epigenetic mechanisms in various cancers. However, the role of the homeobox gene MEIS2 in GC remains unclear. Integrated bioinformatics analysis of RNA-seq and DNA methylation data from TCGA and a K19-Wnt1/C2mE transgenic (Gan) mouse model identified MEIS2 as a candidate gene. Its clinical relevance was assessed using GEO datasets and a clinical cohort of 293 GC patients. Functional roles were investigated through in vitro assays, RNA-seq, and metabolic analyses. Methylation-specific PCR, MassARRAY, and ChIP were used to explore the regulatory mechanisms. MEIS2 was significantly downregulated in GC tissues, and its low expression was associated with advanced tumor stage, neural invasion, and poor overall survival. Functional experiments demonstrated that MEIS2 overexpression suppressed GC cell proliferation, migration, and invasion, induced apoptosis, and inhibited glycolysis by reducing glucose uptake, lactate production, and the expression of key glycolytic enzymes. Hypermethylation of the MEIS2 promoter region (-811 to -757 bp) was negatively correlated with its expression. DNMT1 was found to bind directly to this region and promote MEIS2 promoter hypermethylation, leading to its transcriptional downregulation. MEIS2 acts as a tumor suppressor in GC, and its downregulation is mediated by DNMT1-driven promoter hypermethylation. These findings highlight MEIS2 as a potential therapeutic target and prognostic biomarker in GC.",
+        "journal": "Biochimica et biophysica acta. Molecular basis of disease",
+        "year": "2026",
+        "authors": [
+            "Yangyu Zhang",
+            "YanHua Wu",
+            "Donghui Cao",
+            "Zhifang Jia",
+            "Chenhao Fu",
+            "Xinyi Yu",
+            "Xueyuan Cao",
+            "Jing Jiang"
+        ]
+    },
+    {
+        "pmid": "42224978",
+        "title": "Rational design and synthesis of a heterocycle scaffold for DNMT3A inhibition.",
+        "abstract": "DNA methylation, a crucial epigenetic modification involved in human diseases, is catalyzed by DNA methyltransferases (DNMTs). This study presents a rational design strategy for developing DNMT3A-preferential inhibitors based on a cytosine-containing scaffold. Building on the most potent compound identified from enzymatic activity screening, MOE scaffold replacement was employed to generate a focused virtual library of 5287 analogs. Subsequent drug-likeness and synthetic accessibility filtering narrowed the set to 82 candidates. Among the synthesized derivatives, two lead compounds (6o and 6p) exhibited moderate preferential inhibition of DNMT3A over DNMT1 in enzymatic assays, showing IC",
+        "journal": "Bioorganic chemistry",
+        "year": "2026",
+        "authors": [
+            "Ting Chen",
+            "Ahmad Elbahnsi",
+            "Elodie Olivier",
+            "Syrine Mahdadi",
+            "Corinne Jallet",
+            "Guilaine Nchugoua",
+            "Paola B Arimondo",
+            "Maria A Miteva",
+            "Stéphanie Desbène-Finck"
+        ]
+    },
+    {
+        "pmid": "42189343",
+        "title": "DNMT1 promotes the malignant progression of colorectal cancer by silencing HOXD11 via promoter hypermethylation.",
+        "abstract": "Colorectal cancer (CRC) is a prevalent malignancy worldwide, and epigenetic modifications, particularly methylation of key genes, play a crucial role in its initiation and progression. DNA methyltransferase 1 (DNMT1) is aberrantly overexpressed in CRC; however, its specific mechanisms of action and downstream targets remain unclear. This study aims to elucidate how DNMT1 epigenetically regulates HOXD11 expression and subsequently influences CRC progression. The expression and methylation status of HOXD11 in 30 pairs of CRC tissues and adjacent normal tissues were detected by RT-qPCR, Western Blot, and methylation-specific PCR (MSP). HOXD11 overexpression assays were performed in CRC cell lines, and cell proliferation, migration, invasion, and apoptosis were evaluated using CCK-8, colony formation, wound healing, Transwell assays, and flow cytometry. To identify the key enzyme regulating HOXD11, we conducted specific shRNA knockdown screening of DNA methyltransferase family members (DNMT1, DNMT3A, and DNMT3B). The regulatory effect of DNMT1 on HOXD11 was then verified using the demethylating agent 5-AzaC. Finally, a nude mouse subcutaneous xenograft model was established to validate the therapeutic potential of targeting the DNMT1/HOXD11 axis in vivo. HOXD11 was significantly downregulated in CRC tissues, accompanied by promoter hypermethylation. Overexpression of HOXD11 markedly inhibited CRC cell proliferation, migration, and invasion, while inducing apoptosis. Mechanistic studies revealed that among the three DNMTs screened, only DNMT1 knockdown significantly upregulated HOXD11 expression, confirming DNMT1 as the specific methyltransferase mediating HOXD11 promoter hypermethylation and transcriptional silencing. Treatment with 5-AzaC restored HOXD11 expression and suppressed malignant phenotypes, whereas simultaneous knockdown of HOXD11 reversed these tumor-suppressive effects. In vivo experiments further confirmed that targeted inhibition of DNMT1 significantly curbed tumor growth by upregulating HOXD11. This study reveals that DNMT1-mediated promoter hypermethylation of HOXD11 is a critical mechanism driving the malignant progression of CRC. The DNMT1/HOXD11 axis may serve as a potential therapeutic target of CRC.",
+        "journal": "Discover oncology",
+        "year": "2026",
+        "authors": [
+            "Jing Wang",
+            "Ran Xiang",
+            "Chunhua He",
+            "Fuye Li",
+            "Meng Liu"
+        ]
+    },
+    {
+        "pmid": "42173412",
+        "title": "Targeting DNMT1 restores PTEN expression in colorectal cancer cells.",
+        "abstract": "Epigenetic silencing of tumor suppressor genes (TSGs) is a key driver of colorectal cancer (CRC) progression, with phosphatase and tensin homolog deleted on chromosome 10 (PTEN) frequently inactivated through promoter hypermethylation. This study explored the association between DNA methyltransferase 1 (DNMT1) suppression, PTEN reactivation, and miR-29a-3p modulation following 5-aza-2'-deoxycytidine (5-aza-dC) treatment in CRC cell models. Bioinformatic analyses revealed DNMT1 overexpression, increased PTEN promoter methylation, and a potential regulatory network associated with miR-29a-3p. In vitro, HCT116 and SW620 cells treated with 5-aza-dC exhibited dose-dependent reductions in cell viability, with IC",
+        "journal": "Molecular and cellular probes",
+        "year": "2026",
+        "authors": [
+            "Muhamed A El Nobey",
+            "Abdulkader M Shaikh Omar",
+            "Ali Zari",
+            "Amani Alharthi",
+            "Maha Ali Alghamdi",
+            "Eman Hillal Althubaiti",
+            "Majed Ahmed Al-Shaeri",
+            "Tahani Bakhsh",
+            "Salim M El Hamidy",
+            "Ashwaq H Batawi",
+            "Amaal Hassan"
+        ]
+    },
+    {
+        "pmid": "42074218",
+        "title": "Short-Duration HIPEC-Mimetic Mithramycin A Exposure Induces Durable Transcriptional Remodeling Involving Chromatin Regulatory Networks in Colorectal Cancer Models.",
+        "abstract": "Hyperthermic intraperitoneal chemotherapy (HIPEC) for colorectal peritoneal metastases relies primarily on DNA-damaging agents whose efficacy depends on sustained cytotoxic exposure. Whether brief treatment can induce durable transcriptional remodeling remains unclear. Mithramycin A (MA) is a GC-rich DNA-binding agent with transcriptional regulatory activity involving chromatin-associated pathways. Here, we investigated the molecular and functional consequences of a single 90-min HIPEC-mimetic MA exposure in colorectal cancer models. RNA sequencing revealed extensive and coordinated transcriptional remodeling, affecting a substantial fraction of expressed genes and producing a response qualitatively distinct from mitomycin C. MA selectively suppressed key chromatin-associated regulatory factors, including DNMT1, JARID2, and HDAC4, while coordinately activating canonical cyclin-dependent kinase inhibitors CDKN1A, CDKN1C, and CDKN2C. Gene set enrichment analysis demonstrated enrichment of G2/M checkpoint pathways and suppression of oncogenic gene networks. These molecular changes translated into sustained inhibition of clonogenic growth and activation of caspase-dependent apoptosis following drug washout, with hyperthermia potentiating apoptotic signaling. Collectively, these findings indicate that brief MA exposure induces selective modulation of chromatin regulators and durable transcriptional reorganization, supporting modulation of chromatin regulatory networks as a potential therapeutic strategy for HIPEC-based colorectal cancer therapy.",
+        "journal": "International journal of molecular sciences",
+        "year": "2026",
+        "authors": [
+            "Olivia Coburn-Flynn",
+            "M Virginia Butchy",
+            "Yazid Ghanem",
+            "Robert Emery",
+            "Vincent Verchio",
+            "Kristen Knapp",
+            "Jessica Collier",
+            "Sahil Jethi",
+            "Francis R Spitz",
+            "Ping Zhang",
+            "Weam Othman Elbezanti",
+            "Young Ki Hong"
+        ]
+    },
+    {
+        "pmid": "41926459",
+        "title": "DNMT1 loss leads to hypermethylation of a subset of late replicating domains by DNMT3A.",
+        "abstract": "Loss of DNA methylation is a hallmark of cancer that is proposed to promote carcinogenesis through gene expression alterations, retrotransposon activation and induction of genomic instability. Cancer-associated hypomethylation does not occur across the whole genome but leads to the formation of partially methylated domains (PMDs). However, the mechanisms underpinning PMD formation remain unclear. PMDs replicate late in S-phase leading to the hypothesis that they become hypomethylated due to incomplete re-methylation by the maintenance methyltransferase DNMT1 during cell division. Here we investigate the role of DNMT1 in shaping the cancer methylome by conducting whole genome bisulfite sequencing (WGBS), repli-seq and ChIP-seq on DNMT1 knockout HCT116 colorectal cancer cells (DNMT1 KO cells). We find that DNMT1 loss leads to preferential hypomethylation in late replicating, heterochromatic PMDs marked by the constitutive heterochromatic mark H3K9me3 or the facultative heterochromatic mark H3K27me3. However, we also observe that a subset of H3K9me3-marked PMDs gain methylation in DNMT1 KO cells. We find that, in DNMT1 KO cells, these hypermethylated PMDs remain late replicating but DNMT3A localises to them. This is accompanied by loss of heterochromatic H3K9me3, specific gain of euchromatic H3K36me2 and some gene upregulation. These same domains also have more variable DNA methylation than other PMDs in colorectal tumours in vivo. Our observations suggest that hypermethylated PMDs lose their heterochromatic state, enabling their methylation by DNMT3A and the establishment of a hypermethylated, non-PMD state, despite their late replication timing. More generally, our findings suggest that differential de novo DNMT activity plays a key role in establishing domain level DNA methylation patterns in cancer cells.",
+        "journal": "PLoS genetics",
+        "year": "2026",
+        "authors": [
+            "Ioannis Kafetzopoulos",
+            "Francesca Taglini",
+            "Moira Pasquier",
+            "Hazel Davidson-Smith",
+            "Christine J Rodger",
+            "Lucia Puchades Gimeno",
+            "Andrew A Malcolm",
+            "Duncan Sproul"
+        ]
+    },
+    {
+        "pmid": "41888107",
+        "title": "Short-chain acyl-CoA dehydrogenase initiates mtDNA demethylation and leakage to fuel antitumor immunity in colorectal cancer.",
+        "abstract": "Reprogramming of lipid metabolism and cyclic GMP‒AMP synthase (cGAS)-stimulator of interferon genes (STING) signaling is associated with cancer development. However, whether and how fatty acid metabolism regulates the cGAS‒STING pathway in colorectal cancer (CRC) remains to be elucidated. In this study, we found that short-chain acyl-CoA dehydrogenase (ACADS) is aberrantly deficient in CRC cells and is associated with cancer progression in human patients. We further revealed that ablation of ACADS promoted CRC progression by orchestrating the cGAS‒STING signaling-dependent immunosuppressive tumor microenvironment (TME) in mouse xenografts and AOM/DSS-induced CRC models. Mechanistically, ACADS deficiency suppressed cGAS‒STING signaling by inhibiting mtDNA leakage in a nonmetabolic manner. ACADS binds to and inhibits mitochondrial DNMT1 (mito-DNMT1)-dependent mtDNA methylation, thereby stabilizing mtDNA and inhibiting its leakage. Genetic and pharmacological modulation of mito-DNMT1 restored ACADS-regulated mtDNA leakage, cGAS‒STING signaling, and CRC progression. Importantly, strong correlations between ACADS, mito-DNMT1, and STING signaling and the immune TME were found in patients with CRC. Furthermore, we screened and identified an old drug, hypericin, as an ACADS-binding compound that upregulates ACADS expression. Hypericin treatment can mimic ACADS overexpression-regulated pathways, ultimately improving the immune TME and suppressing CRC growth. These findings highlight a previously undiscovered ACADS/mito-DNMT1 complex that links fatty acid metabolism reprogramming to mtDNA methylation and cGAS‒STING signaling-dependent antitumor immunity.",
+        "journal": "Signal transduction and targeted therapy",
+        "year": "2026",
+        "authors": [
+            "Fang Yang",
+            "Meng Wang",
+            "Shaofan Hu",
+            "Xu Guan",
+            "Kun Zhao",
+            "Yong Zhou",
+            "Hui Yao",
+            "Tianying Zhang",
+            "Liuli Li",
+            "Yuan Gao",
+            "Sijie Zhao",
+            "Nan Liu",
+            "Weidong Xiao",
+            "Yuancai Xiang",
+            "Hongming Miao"
+        ]
+    },
+    {
+        "pmid": "41846456",
+        "title": "DNA Methylation-Regulated FAM107A Affects Colorectal Carcinogenesis by Inhibiting FOXM1.",
+        "abstract": "Family with sequence similarity 107 member A (FAM107A) has been reported to inhibit cancer cell proliferation and migration and enhance apoptosis; however, to our knowledge, the association between FAM107A and colorectal cancer (CRC) has not been explored. CCK-8 assay, colony formation, EdU, flow cytometry assays were used to detect the cellular aggressive behaviors. FAM107A promoter methylation was analyzed by bioinformatics tools. The interaction between DNMT1 and FAM107A was explored by RT-qPCR, Western blot and ChIP assay. Overexpression of FAM107A inhibited CRC cell proliferation ( These results hypothesize that the occurrence and development of CRC are mainly mediated by the DNMT1/FAM107A/FOXM1 axis.",
+        "journal": "Journal of investigative surgery : the official journal of the Academy of Surgical Research",
+        "year": "2026",
+        "authors": [
+            "Yue Liu",
+            "Jinwei Sun",
+            "Yuhua Shi",
+            "Lisheng Wang",
+            "Xinyue Zhang",
+            "Lizhou Chen"
+        ]
+    }
+]
