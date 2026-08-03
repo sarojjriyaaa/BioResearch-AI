@@ -12,8 +12,7 @@
 ## 🚀 Live Demo
 
 👉 **Try the application here**
-
-[Paste your Streamlit URL here after deployment.](https://bioresearch-ai.streamlit.app/)
+(https://bioresearch-ai.streamlit.app/)
 
 ---
 
@@ -127,6 +126,7 @@ streamlit run app/streamlit_app.py
 
 ```
 DNMT1 inhibitors in colorectal cancer
+HIV-1 protease drug discovery
 ```
 
 ---
