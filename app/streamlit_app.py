@@ -1,45 +1,52 @@
+"""
+streamlit_app.py
+
+BioResearch AI
+AI-powered Biomedical Research Platform
+
+Author: Riya Saroj
+"""
+
 from pathlib import Path
-import streamlit as st
-
-css_path = Path(__file__).parent / "assets" / "styles.css"
-
-with open(css_path) as f:
-    st.markdown(
-        f"<style>{f.read()}</style>",
-        unsafe_allow_html=True
-    )
-
-from components.sidebar import render_sidebar
-from components.metrics import show_metrics
-from components.paper_card import display_paper
-from components.footer import render_footer
-from components.review_tabs import show_review
-
-import os
 import time
 
 import streamlit as st
-from dotenv import load_dotenv
 
-from services.pubmed_service import (
-    search_pubmed,
-    fetch_articles,
-    parse_articles,
-)
+# ----------------------------
+# CSS
+# ----------------------------
 
-from services.embedding_service import (
-    load_embedding_model,
-    create_embeddings,
-    build_faiss_index,
-    semantic_search,
-)
+css_path = Path(__file__).parent / "assets" / "styles.css"
 
-from services.rag_service import (
-    configure_gemini,
-    generate_literature_review,
-)
+if css_path.exists():
+    with open(css_path) as f:
+        st.markdown(
+            f"<style>{f.read()}</style>",
+            unsafe_allow_html=True
+        )
 
-load_dotenv()
+# ----------------------------
+# Components
+# ----------------------------
+
+from components.header import render_header
+from components.sidebar import render_sidebar
+from components.workflow import render_workflow
+from components.metrics import render_metrics
+from components.review_tab import show_review
+from components.paper_tab import render_papers
+from components.analytics import render_analytics
+from components.footer import render_footer
+
+# ----------------------------
+# Agents
+# ----------------------------
+
+from agents.orchestrator import AgentOrchestrator
+
+# ----------------------------
+# Streamlit Config
+# ----------------------------
 
 st.set_page_config(
     page_title="BioResearch AI",
@@ -48,177 +55,132 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-with st.sidebar:
+# ----------------------------
+# Sidebar
+# ----------------------------
 
-    st.title("BioResearch AI")
+render_sidebar()
 
-    st.caption("AI-powered Biomedical Literature Research Platform")
+# ----------------------------
+# Header
+# ----------------------------
 
-    st.markdown("---")
+render_header()
 
-    st.subheader("Project")
-
-    st.write("Version : 1.0")
-
-    st.write("LLM : Gemini ")
-
-    st.write("Vector DB : FAISS")
-
-    st.write("Embedding : all-MiniLM-L6-v2")
-
-    st.markdown("---")
-
-    st.subheader("Developer")
-
-    st.write("Riya Saroj")
-
-    st.markdown("---")
-
-    st.caption("AI-powered Biomedical Literature Assistant")
-
-    
-st.markdown(
-    """
-# 🧬 BioResearch AI
-
-### AI-powered Biomedical Research Assistant
-"""
-)
-
-st.markdown(
-"""
-Search PubMed, retrieve the most relevant scientific papers,
-and generate an evidence-based literature review using AI.
-"""
-)
-
-st.divider()
-
+# ----------------------------
+# User Input
+# ----------------------------
 
 query = st.text_input(
-    "Search Disease, Gene, Drug or Protein",
-    placeholder="Example: HIV-1 protease inhibitors"
+    "🔍 Research Question",
+    placeholder="Example: PCOS, Breast Cancer, BRCA1, Alzheimer's Disease"
 )
-
-search = st.button("Analyze Literature")
 
 top_k = st.slider(
     "Number of Relevant Papers",
-    5,
-    20,
-    5
+    min_value=5,
+    max_value=20,
+    value=5
 )
 
-with st.sidebar:
+analyze = st.button(
+    "🚀 Analyze Literature",
+    use_container_width=True
+)
 
-    st.title("🧬 BioResearch AI")
+# ----------------------------
+# Run Pipeline
+# ----------------------------
 
-    st.markdown("---")
-
-    st.success("Gemini Connected")
-
-    st.info("Embedding Model\n\nMiniLM-L6-v2")
-
-    st.markdown("---")
-
-    st.caption("Version 2.0")
-
-if st.button("Generate Literature Review"):
+if analyze:
 
     if query.strip() == "":
         st.warning("Please enter a research question.")
         st.stop()
 
-    with st.spinner("Searching PubMed..."):
+    orchestrator = AgentOrchestrator()
 
-        pmids = search_pubmed(
+    start = time.time()
+
+    with st.spinner("🤖 AI Agents are working..."):
+
+        result = orchestrator.run(
             query=query,
-            max_results=20
-        )
-
-        root = fetch_articles(pmids)
-        start_time = time.time()
-        papers = parse_articles(root)
-
-    with st.spinner("Creating embeddings..."):
-
-        model = load_embedding_model()
-
-        embeddings, papers = create_embeddings(
-            papers,
-            model
-        )
-
-        index = build_faiss_index(
-            embeddings
-        )
-
-    with st.spinner("Retrieving relevant papers..."):
-
-        retrieved = semantic_search(
-            query=query,
-            model=model,
-            index=index,
-            papers=papers,
             top_k=top_k
         )
 
-    with st.spinner("Generating AI review..."):
-
-        gemini = configure_gemini(
-            os.getenv("GEMINI_API_KEY")
-        )
-
-        review = generate_literature_review(
-            gemini,
-            query,
-            retrieved
-        )
-
     elapsed = round(
-        time.time() - start_time,
+        time.time() - start,
         2
     )
 
-    st.success("Done!")
+    st.success("Analysis Complete!")
 
     st.divider()
 
-    c1, c2, c3 = st.columns(3)
+    # ----------------------------
+    # Workflow
+    # ----------------------------
 
-    with c1:
-        st.metric(
-            "Retrieved Papers",
-            len(retrieved)
+    render_workflow(
+        result["status"]
+    )
+
+    st.divider()
+
+    # ----------------------------
+    # Metrics
+    # ----------------------------
+
+    render_metrics(
+        result["stats"],
+        elapsed
+    )
+
+    st.divider()
+
+    # ----------------------------
+    # Tabs
+    # ----------------------------
+
+    review_tab, papers_tab, analytics_tab = st.tabs([
+        "📖 Literature Review",
+        "📚 Papers",
+        "📊 Analytics"
+    ])
+
+    # ----------------------------
+    # Review
+    # ----------------------------
+
+    with review_tab:
+
+        show_review(
+            result["review"]
         )
 
-    with c2:
-        st.metric(
-            "Embedding Size",
-            384
+    # ----------------------------
+    # Papers
+    # ----------------------------
+
+    with papers_tab:
+
+        render_papers(
+            result["papers"]
         )
 
-    with c3:
-        st.metric(
-            "Time",
-            f"{elapsed} sec"
+    # ----------------------------
+    # Analytics
+    # ----------------------------
+
+    with analytics_tab:
+
+        render_analytics(
+            result["visuals"]
         )
 
-    st.subheader("📚 Retrieved Papers")
+# ----------------------------
+# Footer
+# ----------------------------
 
-    for i, paper in enumerate(retrieved, start=1):
-
-        st.markdown(f"### {i}. {paper['title']}")
-
-        st.write(f"**Journal:** {paper['journal']}")
-
-        st.write(f"**Year:** {paper['year']}")
-
-        st.write(f"**PMID:** {paper['pmid']}")
-
-        st.write("---")
-
-        
-
-
-    
+render_footer()

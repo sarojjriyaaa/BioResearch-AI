@@ -1,38 +1,26 @@
 import streamlit as st
 
 
-def show_metrics(
-    papers,
-    embedding_size,
-    elapsed_time
-):
+def render_metrics(stats, elapsed):
 
-    col1, col2, col3, col4 = st.columns(4)
+    c1, c2, c3, c4 = st.columns(4)
 
-    with col1:
+    c1.metric(
+        "Retrieved",
+        stats["retrieved"]
+    )
 
-        st.metric(
-            "📚 Papers",
-            len(papers)
-        )
+    c2.metric(
+        "Filtered",
+        stats["filtered"]
+    )
 
-    with col2:
+    c3.metric(
+        "Ranked",
+        stats["ranked"]
+    )
 
-        st.metric(
-            "🧬 Embedding",
-            embedding_size
-        )
-
-    with col3:
-
-        st.metric(
-            "⏱ Time",
-            f"{elapsed_time:.2f}s"
-        )
-
-    with col4:
-
-        st.metric(
-            "🤖 Status",
-            "Ready"
-        )
+    c4.metric(
+        "Time",
+        f"{elapsed}s"
+    )
