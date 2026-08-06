@@ -1,3 +1,20 @@
+from pathlib import Path
+import streamlit as st
+
+css_path = Path(__file__).parent / "assets" / "styles.css"
+
+with open(css_path) as f:
+    st.markdown(
+        f"<style>{f.read()}</style>",
+        unsafe_allow_html=True
+    )
+
+from components.sidebar import render_sidebar
+from components.metrics import show_metrics
+from components.paper_card import display_paper
+from components.footer import render_footer
+from components.review_tabs import show_review
+
 import os
 import time
 
@@ -33,7 +50,9 @@ st.set_page_config(
 
 with st.sidebar:
 
-    st.title("🧬 BioResearch AI")
+    st.title("BioResearch AI")
+
+    st.caption("AI-powered Biomedical Literature Research Platform")
 
     st.markdown("---")
 
@@ -41,7 +60,7 @@ with st.sidebar:
 
     st.write("Version : 1.0")
 
-    st.write("LLM : Gemini Flash")
+    st.write("LLM : Gemini ")
 
     st.write("Vector DB : FAISS")
 
@@ -77,9 +96,11 @@ st.divider()
 
 
 query = st.text_input(
-    "🔍 Enter Research Question",
+    "Search Disease, Gene, Drug or Protein",
     placeholder="Example: HIV-1 protease inhibitors"
 )
+
+search = st.button("Analyze Literature")
 
 top_k = st.slider(
     "Number of Relevant Papers",
@@ -88,6 +109,19 @@ top_k = st.slider(
     5
 )
 
+with st.sidebar:
+
+    st.title("🧬 BioResearch AI")
+
+    st.markdown("---")
+
+    st.success("Gemini Connected")
+
+    st.info("Embedding Model\n\nMiniLM-L6-v2")
+
+    st.markdown("---")
+
+    st.caption("Version 2.0")
 
 if st.button("Generate Literature Review"):
 

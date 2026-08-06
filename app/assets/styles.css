@@ -1,0 +1,26 @@
+/* Main title */
+h1 {
+    color: #0F4C81;
+    font-weight: 700;
+}
+
+/* Buttons */
+.stButton>button {
+    width: 100%;
+    border-radius: 12px;
+    height: 50px;
+    font-size: 17px;
+}
+
+/* Metric cards */
+[data-testid="metric-container"] {
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #F8FAFC;
+}
