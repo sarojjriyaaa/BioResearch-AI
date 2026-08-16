@@ -1,12 +1,3 @@
-"""
-visualization_agent.py
-
-Visualization Preparation Agent
-
-Author: Riya Saroj
-Project: BioResearch AI
-"""
-
 from collections import Counter
 
 
@@ -16,14 +7,27 @@ class VisualizationAgent:
 
         years = []
         journals = []
+        authors = []
+        keywords = []
 
         for paper in evidence:
 
-            if paper["year"]:
+            if paper.get("year"):
                 years.append(paper["year"])
 
-            if paper["journal"]:
+            if paper.get("journal"):
                 journals.append(paper["journal"])
+
+            authors.extend(paper.get("authors", []))
+
+            title = paper.get("title", "")
+
+            for word in title.split():
+
+                word = word.lower()
+
+                if len(word) > 4:
+                    keywords.append(word)
 
         return {
 
@@ -31,6 +35,10 @@ class VisualizationAgent:
 
             "years": Counter(years),
 
-            "journals": Counter(journals)
+            "journals": Counter(journals),
+
+            "authors": Counter(authors).most_common(10),
+
+            "keywords": Counter(keywords).most_common(15)
 
         }
