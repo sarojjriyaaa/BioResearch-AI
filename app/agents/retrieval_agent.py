@@ -41,10 +41,9 @@ class RetrievalAgent:
 
                 continue
 
-        root = fetch_articles(
-            list(all_pmids)
-        )
+        if not all_pmids:
+            return []
 
+        root = fetch_articles(list(all_pmids))
         papers = parse_articles(root)
-
         return papers

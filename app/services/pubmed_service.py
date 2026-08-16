@@ -51,34 +51,37 @@ def search_pubmed(query: str, max_results: int = 100) -> List[str]:
 
     return pmids
 
-def fetch_articles(pmids: List[str]) -> ET.Element:
-    """
-    Fetch article metadata from PubMed.
+def fetch_articles(pmids):
 
-    Parameters
-    ----------
-    pmids : List[str]
-        List of PubMed IDs.
-
-    Returns
-    -------
-    ET.Element
-        Root element of the PubMed XML response.
-    """
+    if not pmids:
+        return ET.Element("PubmedArticleSet")
 
     params = {
         "db": "pubmed",
-        "id": ",".join(pmids),
+        "id": ",".join(pmids[:100]),   # limit request size
         "retmode": "xml"
     }
 
-    response = requests.get(EFETCH_URL, params=params)
+    try:
 
-    response.raise_for_status()
+        response = requests.get(
+            EFETCH_URL,
+            params=params,
+            timeout=30,
+            headers={
+                "User-Agent":"BioResearchAI/1.0"
+            }
+        )
 
-    root = ET.fromstring(response.text)
+        response.raise_for_status()
 
-    return root
+        return ET.fromstring(response.text)
+
+    except requests.exceptions.RequestException as e:
+
+        print("PubMed fetch failed:", e)
+
+        return ET.Element("PubmedArticleSet")
 
 def extract_paper(pubmed_article) -> Dict:
     """
