@@ -124,35 +124,19 @@ if analyze:
     # Tabs
     # ----------------------------
 
-    review_tab, papers_tab, analytics_tab = st.tabs(
-        [
-            "📖 Literature Review",
-            "📚 Papers",
-            "📊 Analytics"
-        ]
-    )
+    st.divider()
 
-    with review_tab:
-        st.write("REVIEW VALUE:")
-        st.write(result.get("review"))
-        show_review(
-            result.get(
-                "review",
-                "No review generated."
-            )
-        )
+    st.header("DEBUG OUTPUT")
 
-    with papers_tab:
+    st.write("Result keys:")
+    st.write(result.keys())
 
-        render_papers(
-               result.get("papers",[])
-        )
-        
-    with analytics_tab:
+    st.write("Review:")
+    st.write(result.get("review"))
 
-        render_analytics(
-            result.get(
-                "visuals",
-                {}
-            )
-        )
+    st.write("Papers:")
+    st.write(result.get("papers"))
+
+    st.write("Visuals:")
+    st.write(result.get("visuals"))
+    
