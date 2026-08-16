@@ -1,26 +1,99 @@
-/* Main title */
-h1 {
-    color: #0F4C81;
-    font-weight: 700;
+body{
+    background:#F8FAFC;
 }
 
-/* Buttons */
-.stButton>button {
-    width: 100%;
-    border-radius: 12px;
-    height: 50px;
-    font-size: 17px;
+.hero{
+
+padding:30px;
+
+border-radius:18px;
+
+background:white;
+
+border:1px solid #E2E8F0;
+
+box-shadow:0px 5px 25px rgba(0,0,0,.05);
+
+margin-bottom:25px;
+
 }
 
-/* Metric cards */
-[data-testid="metric-container"] {
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+.hero h1{
+
+color:#2563EB;
+
+font-size:42px;
+
+font-weight:700;
+
+margin-bottom:10px;
+
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #F8FAFC;
+.hero p{
+
+font-size:18px;
+
+color:#475569;
+
+}
+
+.metric-card{
+
+padding:20px;
+
+border-radius:15px;
+
+background:white;
+
+border:1px solid #E2E8F0;
+
+box-shadow:0px 5px 15px rgba(0,0,0,.04);
+
+text-align:center;
+
+}
+
+.paper-card{
+
+padding:20px;
+
+background:white;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+border-left:5px solid #2563EB;
+
+box-shadow:0px 3px 12px rgba(0,0,0,.05);
+
+}
+
+.workflow-card{
+
+padding:15px;
+
+border-radius:12px;
+
+background:#EFF6FF;
+
+margin-bottom:10px;
+
+border:1px solid #BFDBFE;
+
+}
+
+.review-box{
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+border:1px solid #CBD5E1;
+
+line-height:1.8;
+
 }

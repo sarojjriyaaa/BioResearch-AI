@@ -50,10 +50,17 @@ class AgentOrchestrator:
             ranked
         )
 
-        review = self.reviewer.review(
-            query,
-            ranked
-        )
+        try:
+            review = self.reviewer.review(
+                query,
+                ranked
+            )
+        except Exception:
+
+            review = (
+                "AI review unavailable."
+                "PubMed retrieval completed successfully."
+            )
 
         visuals = self.visualizer.prepare(
             evidence

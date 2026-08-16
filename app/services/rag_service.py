@@ -7,10 +7,14 @@ Author: Riya Saroj
 Project: BioResearch AI
 """
 
+import time
 from google import genai
 
 
 def configure_gemini(api_key: str):
+    """
+    Configure Gemini client.
+    """
 
     client = genai.Client(
         api_key=api_key
@@ -20,22 +24,38 @@ def configure_gemini(api_key: str):
 
 
 def build_context(papers):
+    """
+    Builds prompt context using the retrieved papers.
+
+    Long abstracts are truncated to avoid Gemini
+    server errors caused by very large prompts.
+    """
 
     context = ""
 
     for i, paper in enumerate(papers, start=1):
 
+        title = paper.get("title", "Unknown")
+
+        abstract = paper.get("abstract", "")
+
+        pmid = paper.get("pmid", "Unknown")
+
+        # Prevent extremely large prompts
+        if len(abstract) > 1200:
+            abstract = abstract[:1200] + "..."
+
         context += f"""
 Paper {i}
 
 Title:
-{paper["title"]}
+{title}
 
 Abstract:
-{paper["abstract"]}
+{abstract}
 
 PMID:
-{paper["pmid"]}
+{pmid}
 
 ----------------------------------------
 """
@@ -48,38 +68,96 @@ def generate_literature_review(
     query,
     papers
 ):
+    """
+    Generates an evidence-based literature review.
+
+    Automatically retries if Gemini temporarily
+    returns a server error.
+    """
+
+    # Send only top papers to Gemini
+    papers = papers[:6]
 
     context = build_context(papers)
 
     prompt = f"""
-You are an expert biomedical research assistant.
+You are an expert biomedical researcher.
 
-Use ONLY the evidence provided below.
+Your job is to write a professional scientific literature review.
 
-Research Question:
+IMPORTANT RULES
+
+- Use ONLY the provided papers.
+- Do NOT hallucinate.
+- Mention PMID wherever appropriate.
+- Be concise.
+- Use scientific language.
+
+Research Question
+
 {query}
 
-Scientific Papers:
+Scientific Papers
+
 {context}
 
-Generate a structured literature review.
+Generate the report using the following headings.
 
-Include:
+# Overview
 
-1. Overview
-2. Major Findings
-3. Biological Mechanisms
-4. Important Genes
-5. Important Drugs / Compounds
-6. Contradictory Evidence
-7. Research Gaps
-8. Future Directions
-9. References (PMIDs)
+# Major Findings
+
+# Biological Mechanisms
+
+# Important Genes
+
+# Important Drugs / Compounds
+
+# Contradictory Evidence
+
+# Research Gaps
+
+# Future Directions
+
+# References (PMIDs)
 """
 
-    response = client.models.generate_content(
-        model="models/gemini-flash-latest",
-        contents=prompt
-    )
+    last_error = None
 
-    return response.text
+    for attempt in range(3):
+
+        try:
+
+            response = client.models.generate_content(
+
+                model="gemini-2.5-flash",
+
+                contents=prompt
+
+            )
+
+            return response.text
+
+        except Exception as e:
+
+            last_error = e
+
+            print(f"Gemini Attempt {attempt+1} Failed")
+
+            print(e)
+
+            time.sleep(5)
+
+    return f"""
+# AI Literature Review
+
+⚠️ Gemini could not generate the literature review.
+
+Reason
+
+{last_error}
+
+The scientific papers were retrieved successfully.
+
+Please try again after a few seconds.
+"""

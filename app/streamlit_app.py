@@ -13,6 +13,17 @@ import time
 import streamlit as st
 
 # ----------------------------
+# Page Config (FIRST Streamlit command)
+# ----------------------------
+
+st.set_page_config(
+    page_title="BioResearch AI",
+    page_icon="🧬",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# ----------------------------
 # CSS
 # ----------------------------
 
@@ -31,29 +42,16 @@ if css_path.exists():
 
 from components.header import render_header
 from components.sidebar import render_sidebar
-from components.workflow import render_workflow
 from components.metrics import render_metrics
 from components.review_tab import show_review
 from components.paper_tab import render_papers
 from components.analytics import render_analytics
-from components.footer import render_footer
 
 # ----------------------------
 # Agents
 # ----------------------------
 
 from agents.orchestrator import AgentOrchestrator
-
-# ----------------------------
-# Streamlit Config
-# ----------------------------
-
-st.set_page_config(
-    page_title="BioResearch AI",
-    page_icon="🧬",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # ----------------------------
 # Sidebar
@@ -73,7 +71,7 @@ render_header()
 
 query = st.text_input(
     "🔍 Research Question",
-    placeholder="Example: PCOS, Breast Cancer, BRCA1, Alzheimer's Disease"
+    placeholder="Example: PCOS, Breast Cancer, BRCA1"
 )
 
 top_k = st.slider(
@@ -94,7 +92,7 @@ analyze = st.button(
 
 if analyze:
 
-    if query.strip() == "":
+    if not query.strip():
         st.warning("Please enter a research question.")
         st.stop()
 
@@ -109,78 +107,57 @@ if analyze:
             top_k=top_k
         )
 
-    elapsed = round(
-        time.time() - start,
-        2
-    )
+    elapsed = round(time.time() - start, 2)
 
-    st.success("Analysis Complete!")
-
-    st.divider()
-
-    # ----------------------------
-    # Workflow
-    # ----------------------------
-
-    render_workflow(
-        result["status"]
-    )
-
-    st.divider()
+    st.success("✅ Analysis Complete!")
 
     # ----------------------------
     # Metrics
     # ----------------------------
+
+    st.write("Stats received:")
+
+    st.write(result["stats"])
+    #st.write(type(result["stats"]))
 
     render_metrics(
         result["stats"],
         elapsed
     )
 
-    st.divider()
-
     # ----------------------------
     # Tabs
     # ----------------------------
 
-    review_tab, papers_tab, analytics_tab = st.tabs([
-        "📖 Literature Review",
-        "📚 Papers",
-        "📊 Analytics"
-    ])
+    #review_tab, papers_tab, analytics_tab = st.tabs(
+    #    [
+    #        "📖 Literature Review",
+    #        "📚 Papers",
+    #        "📊 Analytics"
+    #    ]
+    #)
 
-    # ----------------------------
-    # Review
-    # ----------------------------
+    #with review_tab:
+#
+ #       show_review(
+  #             "review",
+   #             "No review generated."
+    #        )
+     #   )
 
-    with review_tab:
+ #   with papers_tab:
 
-        show_review(
-            result["review"]
-        )
+  #      render_papers(
+   #            "papers",
+    #            []
+     #       )
+      #  )
 
-    # ----------------------------
-    # Papers
-    # ----------------------------
+  #  with analytics_tab:
 
-    with papers_tab:
-
-        render_papers(
-            result["papers"]
-        )
-
-    # ----------------------------
-    # Analytics
-    # ----------------------------
-
-    with analytics_tab:
-
-        render_analytics(
-            result["visuals"]
-        )
-
-# ----------------------------
-# Footer
-# ----------------------------
-
-render_footer()
+   #     render_analytics(
+    #        result.get(
+     #           "visuals",
+      #          {}
+       #     )
+        #)

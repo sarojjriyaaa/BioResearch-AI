@@ -4,17 +4,41 @@ import streamlit as st
 def render_sidebar():
 
     with st.sidebar:
+
         st.title("🧬 BioResearch AI")
-        st.markdown("### Navigation")
-        st.info("🏠 Dashboard")
-        st.info("📚 Literature Review")
-        st.info("📄 Paper Explorer")
-        st.info("🤖 AI Workspace")
+
+        st.caption("Biomedical Research Platform")
+
         st.divider()
-        st.markdown("### System")
+
+        st.write("### Navigation")
+
+        st.write("🏠 Dashboard")
+
+        st.write("📚 Literature Review")
+
+        st.write("📄 Paper Explorer")
+
+        st.write("🤖 AI Workspace")
+
+        st.write("📊 Analytics")
+
+        st.write("💾 Research History")
+
+        st.divider()
+
+        st.write("### System")
+
         st.success("🟢 Gemini Connected")
-        st.write("Embedding Model")
+
+        st.write("Embedding")
+
         st.code("all-MiniLM-L6-v2")
-        st.write("Vector Database")
+
+        st.write("Vector DB")
+
         st.code("FAISS")
-        st.caption("Version 2.0")
+
+        st.write("Database")
+
+        st.code("SQLite")

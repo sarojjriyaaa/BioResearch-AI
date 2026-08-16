@@ -1,23 +1,26 @@
 import streamlit as st
 
 
-def display_paper(paper, index):
+def display_paper(paper,index):
 
-    with st.container(border=True):
-
-        st.subheader(f"📄 Paper {index}")
+    with st.container():
 
         st.markdown(
-            f"### {paper['title']}"
+            f"""
+<div class="paper-card">
+
+<h3>{index}. {paper['title']}</h3>
+
+<b>Journal:</b> {paper['journal']}<br>
+
+<b>Year:</b> {paper['year']}<br>
+
+<b>PMID:</b> {paper['pmid']}
+
+</div>
+""",
+            unsafe_allow_html=True
         )
-
-        c1, c2, c3 = st.columns(3)
-
-        c1.write(f"**Journal**  \n{paper['journal']}")
-
-        c2.write(f"**Year**  \n{paper['year']}")
-
-        c3.write(f"**PMID**  \n{paper['pmid']}")
 
         with st.expander("Abstract"):
 

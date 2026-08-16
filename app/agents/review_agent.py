@@ -19,22 +19,31 @@ from services.rag_service import (
 load_dotenv()
 
 
-class ReviewAgent:
+def review(self, query, papers):
 
-    def __init__(self):
-
-        self.client = configure_gemini(
-            os.getenv("GEMINI_API_KEY")
-        )
-
-    def review(
-        self,
-        query,
-        papers
-    ):
-
+    try:
         return generate_literature_review(
             self.client,
             query,
             papers
         )
+
+    except Exception as e:
+
+        print(e)
+
+        return f"""
+# AI Literature Review
+
+⚠️ Gemini is temporarily unavailable.
+
+Reason:
+
+{str(e)}
+
+The literature search completed successfully.
+
+Retrieved {len(papers)} relevant papers.
+
+Please review the evidence below.
+"""

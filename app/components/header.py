@@ -3,15 +3,17 @@ import streamlit as st
 
 def render_header():
 
-    st.title("🧬 BioResearch AI")
+    st.markdown(
+        """
+<div class="hero">
 
-    st.caption(
-        "AI-powered Biomedical Research Platform"
+<h1>🧬 BioResearch AI Platform</h1>
+
+<p>
+AI-powered Biomedical Literature Discovery & Evidence-based Research Assistant
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True
     )
-
-    st.write(
-        "Search PubMed, retrieve biomedical literature, perform semantic ranking, "
-        "and generate evidence-based literature reviews using AI agents."
-    )
-
-    st.divider()
