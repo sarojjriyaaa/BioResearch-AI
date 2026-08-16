@@ -22,24 +22,14 @@ class ReviewAgent:
 
     def __init__(self):
 
-        api_key = os.getenv("GEMINI_API_KEY")
+        api_key = os.getenv("OPENROUTER_API_KEY")
 
         if not api_key:
             raise ValueError(
-                "GEMINI_API_KEY not found in environment variables."
+                "OPENROUTER_API_KEY not found in environment variables."
             )
 
-        self.client = configure_gemini(os.getenv("GEMINI_API_KEY"))
-
-        print("=" * 50)
-        print("AVAILABLE GEMINI MODELS")
-        print("=" * 50)
-
-        for model in self.client.models.list():
-
-            print(model.name)
-
-        print("=" * 50)
+        self.client = configure_gemini(api_key)
 
     def review(self, query, papers):
 
