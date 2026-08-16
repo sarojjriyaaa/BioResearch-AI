@@ -110,7 +110,6 @@ if analyze:
     elapsed = round(time.time() - start, 2)
 
     st.success("✅ Analysis Complete!")
-    st.write(result.keys())
 
     # ----------------------------
     # Metrics
