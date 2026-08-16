@@ -31,6 +31,16 @@ class ReviewAgent:
 
         self.client = configure_gemini(os.getenv("GEMINI_API_KEY"))
 
+        print("=" * 50)
+        print("AVAILABLE GEMINI MODELS")
+        print("=" * 50)
+
+        for model in self.client.models.list():
+
+            print(model.name)
+
+        print("=" * 50)
+
     def review(self, query, papers):
 
         return generate_literature_review(
