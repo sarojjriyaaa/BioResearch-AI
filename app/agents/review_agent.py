@@ -7,32 +7,31 @@ Author: Riya Saroj
 Project: BioResearch AI
 """
 
-import os
-
-from dotenv import load_dotenv
-
 from services.rag_service import (
     configure_gemini,
-    generate_literature_review
+    generate_literature_review,
 )
 
-load_dotenv()
 
+class ReviewAgent:
 
-def review(self, query, papers):
+    def __init__(self):
+        self.client = configure_gemini()
 
-    try:
-        return generate_literature_review(
-            self.client,
-            query,
-            papers
-        )
+    def review(self, query, papers):
 
-    except Exception as e:
+        try:
+            return generate_literature_review(
+                self.client,
+                query,
+                papers
+            )
 
-        print(e)
+        except Exception as e:
 
-        return f"""
+            print(f"Gemini Error: {e}")
+
+            return f"""
 # AI Literature Review
 
 ⚠️ Gemini is temporarily unavailable.
@@ -43,7 +42,7 @@ Reason:
 
 The literature search completed successfully.
 
-Retrieved {len(papers)} relevant papers.
+Retrieved **{len(papers)}** relevant papers.
 
-Please review the evidence below.
+Please review the retrieved evidence below.
 """

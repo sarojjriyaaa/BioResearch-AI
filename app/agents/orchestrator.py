@@ -55,12 +55,19 @@ class AgentOrchestrator:
                 query,
                 ranked
             )
-        except Exception:
+        except Exception as e:
 
-            review = (
-                "AI review unavailable."
-                "PubMed retrieval completed successfully."
-            )
+            print(e)
+
+            review = f"""
+        # AI Literature Review
+        AI Review unavailable.
+        Reason:
+
+        {str(e)}
+
+        PubMed retrieval completed successfully.
+        """
 
         visuals = self.visualizer.prepare(
             evidence
