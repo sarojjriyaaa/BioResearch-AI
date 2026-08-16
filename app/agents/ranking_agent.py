@@ -28,14 +28,28 @@ class RankingAgent:
         top_k
     ):
 
+        print("=" * 60)
+        print("Papers received:", len(papers))
+
         embeddings, valid_papers = create_embeddings(
             papers,
             self.model
         )
 
+        print("Valid papers:", len(valid_papers))
+        print("Embeddings type:", type(embeddings))
+
+        if hasattr(embeddings, "shape"):
+            print("Embeddings shape:", embeddings.shape)
+
+        if len(valid_papers) == 0:
+            print("No valid papers.")
+            return []
+
         index = build_faiss_index(
             embeddings
         )
+
 
         return semantic_search(
             query=query,

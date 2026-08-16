@@ -26,7 +26,7 @@ def load_papers(json_path: Path) -> List[Dict]:
 
 
 def create_embeddings(
-    papers: List[Dict],
+    papers,
     model
 ):
     texts = []
@@ -34,28 +34,40 @@ def create_embeddings(
 
     for paper in papers:
 
-        title = paper.get("title") or ""
-        abstract = paper.get("abstract") or ""
+        title = paper.get("title", "")
+        abstract = paper.get("abstract", "")
 
-        if title == "" and abstract == "":
+        if not title and not abstract:
             continue
 
-        text = f"{title}\n\n{abstract}"
-
-        texts.append(text)
+        texts.append(f"{title}\n\n{abstract}")
         valid_papers.append(paper)
+
+    if len(texts) == 0:
+        return np.empty((0, 384), dtype=np.float32), []
 
     embeddings = model.encode(
         texts,
         convert_to_numpy=True,
-        show_progress_bar=True
+        show_progress_bar=False
     )
+
+    embeddings = np.asarray(
+        embeddings,
+        dtype=np.float32
+    )
+
+    if embeddings.ndim == 1:
+        embeddings = embeddings.reshape(1, -1)
 
     return embeddings.astype(np.float32), valid_papers
 
 
 def build_faiss_index(embeddings):
 
+    if embeddings.shape[0] == 0:
+        raise ValueError("No embeddings generated.")
+    
     dimension = embeddings.shape[1]
 
     index = faiss.IndexFlatL2(dimension)
