@@ -130,7 +130,7 @@ Generate the report using the following headings.
 
             response = client.models.generate_content(
 
-                model="gemini-2.5-flash",
+                model="gemini-2.5-flash-lite",
 
                 contents=prompt
 
