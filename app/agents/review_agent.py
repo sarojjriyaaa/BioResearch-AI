@@ -7,42 +7,34 @@ Author: Riya Saroj
 Project: BioResearch AI
 """
 
+import os
+from dotenv import load_dotenv
+
 from services.rag_service import (
     configure_gemini,
-    generate_literature_review,
+    generate_literature_review
 )
+
+load_dotenv()
 
 
 class ReviewAgent:
 
     def __init__(self):
-        self.client = configure_gemini()
+
+        api_key = os.getenv("GEMINI_API_KEY")
+
+        if not api_key:
+            raise ValueError(
+                "GEMINI_API_KEY not found in environment variables."
+            )
+
+        self.client = configure_gemini(os.getenv("GEMINI_API_KEY"))
 
     def review(self, query, papers):
 
-        try:
-            return generate_literature_review(
-                self.client,
-                query,
-                papers
-            )
-
-        except Exception as e:
-
-            print(f"Gemini Error: {e}")
-
-            return f"""
-# AI Literature Review
-
-⚠️ Gemini is temporarily unavailable.
-
-Reason:
-
-{str(e)}
-
-The literature search completed successfully.
-
-Retrieved **{len(papers)}** relevant papers.
-
-Please review the retrieved evidence below.
-"""
+        return generate_literature_review(
+            self.client,
+            query,
+            papers
+        )
