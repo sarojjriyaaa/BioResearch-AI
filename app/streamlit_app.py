@@ -129,35 +129,33 @@ if analyze:
     # Tabs
     # ----------------------------
 
-    #review_tab, papers_tab, analytics_tab = st.tabs(
-    #    [
-    #        "📖 Literature Review",
-    #        "📚 Papers",
-    #        "📊 Analytics"
-    #    ]
-    #)
+    review_tab, papers_tab, analytics_tab = st.tabs(
+        [
+            "📖 Literature Review",
+            "📚 Papers",
+            "📊 Analytics"
+        ]
+    )
 
-    #with review_tab:
-#
- #       show_review(
-  #             "review",
-   #             "No review generated."
-    #        )
-     #   )
+    with review_tab:
 
- #   with papers_tab:
+        show_review(
+               "review",
+                "No review generated."
+            )
 
-  #      render_papers(
-   #            "papers",
-    #            []
-     #       )
-      #  )
+    with papers_tab:
 
-  #  with analytics_tab:
+        render_papers(
+               "papers",
+                []
+            )
+        
+    with analytics_tab:
 
-   #     render_analytics(
-    #        result.get(
-     #           "visuals",
-      #          {}
-       #     )
-        #)
+        render_analytics(
+            result.get(
+                "visuals",
+                {}
+            )
+        )
