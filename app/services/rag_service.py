@@ -11,13 +11,15 @@ import time
 from google import genai
 
 
-def configure_gemini(api_key: str):
-    """
-    Configure Gemini client.
-    """
+def configure_gemini(api_key):
+    client = genai.Client(api_key=api_key)
 
-    return genai.Client(api_key=api_key)
+    print("AVAILABLE MODELS")
 
+    for model in client.models.list():
+        print(model.name)
+
+    return client
 
 def build_context(papers):
     """
