@@ -1,56 +1,51 @@
 """
 rag_service.py
 
-Gemini RAG Service
+OpenRouter Literature Review Service
 
 Author: Riya Saroj
 Project: BioResearch AI
 """
 
-import time
-from google import genai
+import os
+import requests
 
 
-def configure_gemini(api_key):
-    client = genai.Client(api_key=api_key)
+API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-    print("AVAILABLE MODELS")
 
-    for model in client.models.list():
-        print(model.name)
+def configure_gemini(api_key=None):
+    """
+    Kept for compatibility.
+    We simply return the OpenRouter key.
+    """
+    return os.getenv("OPENROUTER_API_KEY")
 
-    return client
 
 def build_context(papers):
-    """
-    Build prompt context from retrieved papers.
-    """
 
     context = ""
 
     for i, paper in enumerate(papers, start=1):
-
-        title = paper.get("title", "Unknown")
-
-        abstract = paper.get("abstract", "")
-
-        pmid = paper.get("pmid", "Unknown")
-
-        if len(abstract) > 1200:
-            abstract = abstract[:1200] + "..."
 
         context += f"""
 
 Paper {i}
 
 Title:
-{title}
+{paper.get("title","")}
 
-Abstract:
-{abstract}
+Journal:
+{paper.get("journal","")}
+
+Year:
+{paper.get("year","")}
 
 PMID:
-{pmid}
+{paper.get("pmid","")}
+
+Abstract:
+{paper.get("abstract","")[:1200]}
 
 ----------------------------------------
 """
@@ -59,7 +54,7 @@ PMID:
 
 
 def generate_literature_review(
-    client,
+    api_key,
     query,
     papers
 ):
@@ -69,82 +64,69 @@ def generate_literature_review(
     context = build_context(papers)
 
     prompt = f"""
-You are a senior biomedical researcher.
+You are a senior biomedical scientist.
 
-Write a professional evidence-based literature review.
+Write a professional literature review.
 
-IMPORTANT
+Rules:
 
-- Use ONLY the papers below.
+- Use ONLY the provided papers.
 - Never invent facts.
-- Mention PMID whenever making scientific claims.
-- Write in Markdown.
+- Mention PMIDs.
+- Use markdown headings.
 
-Research Question
+Research Question:
 
 {query}
 
-Scientific Papers
+Scientific Papers:
 
 {context}
 
-Return the report with these headings.
+Write:
 
 # Executive Summary
 
-# Background
-
 # Major Findings
 
-# Molecular Mechanisms
+# Biological Mechanisms
 
 # Important Genes
 
 # Therapeutic Targets
 
-# Limitations
+# Research Gaps
 
 # Future Directions
 
-# References (PMIDs)
+# References
 """
 
-    last_error = None
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
 
-    for attempt in range(3):
+    data = {
+        "model": "openrouter/auto",
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        "temperature": 0.2,
+    }
 
-        try:
+    response = requests.post(
+        API_URL,
+        headers=headers,
+        json=data,
+        timeout=120
+    )
 
-            response = client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=prompt
-            )
+    response.raise_for_status()
 
-            if response.text:
-                return response.text
+    result = response.json()
 
-            return "# No review generated."
-
-        except Exception as e:
-
-            last_error = e
-
-            print(f"Attempt {attempt+1} failed")
-
-            print(e)
-
-            time.sleep(3)
-
-    return f"""
-# AI Literature Review
-
-⚠️ Gemini could not generate the literature review.
-
-Reason
-
-{last_error}
-
-The scientific papers were retrieved successfully.
-
-Please try again later.
-"""
+    return result["choices"][0]["message"]["content"]
