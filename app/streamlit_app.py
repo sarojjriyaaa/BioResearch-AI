@@ -110,15 +110,11 @@ if analyze:
     elapsed = round(time.time() - start, 2)
 
     st.success("✅ Analysis Complete!")
+    st.write(result.keys())
 
     # ----------------------------
     # Metrics
     # ----------------------------
-
-    st.write("Stats received:")
-
-    st.write(result["stats"])
-    #st.write(type(result["stats"]))
 
     render_metrics(
         result["stats"],
@@ -138,18 +134,20 @@ if analyze:
     )
 
     with review_tab:
-
+        st.write("REVIEW VALUE:")
+        st.write(result.get("review"))
         show_review(
-               "review",
+            result.get(
+                "review",
                 "No review generated."
             )
+        )
 
     with papers_tab:
 
         render_papers(
-               "papers",
-                []
-            )
+               result.get("papers",[])
+        )
         
     with analytics_tab:
 
